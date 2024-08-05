@@ -1,7 +1,7 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import styles from './ArticleParamsForm.module.scss';
-import { useState, useLayoutEffect, FormEvent /*, useRef */ } from 'react';
+import { useState, useLayoutEffect, FormEvent } from 'react';
 import { Select } from '../select';
 import {
 	fontFamilyOptions,
@@ -32,21 +32,6 @@ export const ArticleParamsForm = ({
 		contentWidth: articleState.contentWidth,
 	});
 
-	/*const ref = useRef<HTMLDivElement>(null);*/
-	/*useEffect(() => {
-		const handleClickOutside = (event) => {
-		  if (!ref?.current?.contains(event.target)) {
-			setIsMenuOpen(false);
-		  }
-		 console.log('pf')
-		};
-		document.addEventListener("mousedown", handleClickOutside);
-	  }, [ref]);*/
-
-	/*const openPopup = () => {
-		setIsMenuOpen(true);
-	  };*/
-
 	const closePopup = () => {
 		setIsMenuOpen(false);
 	};
@@ -69,7 +54,7 @@ export const ArticleParamsForm = ({
 		};
 	}, [isMenuOpen]);
 
-	const formSubmitHandler = (evt: FormEvent) => {
+	const submitFormHandler = (evt: FormEvent) => {
 		evt.preventDefault();
 		setArticleState({
 			...formState,
@@ -80,7 +65,7 @@ export const ArticleParamsForm = ({
 			contentWidth: formState.contentWidth,
 		});
 	};
-	const formResetHandler = () => {
+	const resetFormHandler = () => {
 		console.log('найс ресет');
 		setArticleState({
 			...formState,
@@ -109,8 +94,8 @@ export const ArticleParamsForm = ({
 				}`}>
 				<form
 					className={styles.form}
-					onSubmit={formSubmitHandler}
-					onReset={formResetHandler}>
+					onSubmit={submitFormHandler}
+					onReset={resetFormHandler}>
 					<Text size={31} weight={800} uppercase dynamic>
 						Задайте параметры
 					</Text>
